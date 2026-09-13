@@ -67,7 +67,7 @@ export default function NewsDetail() {
       )}
 
       {/* Body */}
-      <section className="bg-[#050505] py-14 px-4 md:px-8">
+      <section className="bg-black py-14 px-4 md:px-8">
         <div className="max-w-[800px] mx-auto">
           <div className="prose-content text-gray-400 leading-[1.9] font-light text-[0.95rem] whitespace-pre-wrap animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.3s_both]">{article.content}</div>
 

@@ -67,7 +67,7 @@ export default function GameDetail() {
               { icon: Calendar, label: "Date", value: new Date(game.date).toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) },
               { icon: Clock, label: "Time", value: game.time || "TBD" },
             ].map(({ icon: Icon, label, value }, i) => (
-              <div key={label} className="bg-[#0a0a0a] p-5 text-center group hover:bg-[#0f0f0f] transition-all duration-300 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div key={label} className="bg-black-card p-5 text-center group hover:bg-black-elevated transition-all duration-300 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
                 <Icon size={14} strokeWidth={1.5} className="text-red mx-auto mb-2" />
                 <div className="text-gray-600 text-[0.55rem] font-bold uppercase tracking-[3px] mb-1">{label}</div>
                 <div className="text-white text-[0.8rem] font-medium">{value}</div>
@@ -79,7 +79,7 @@ export default function GameDetail() {
 
       {/* Best Performers */}
       {game.bestPerformers && game.bestPerformers.length > 0 && (
-        <section className="bg-[#050505] py-14 px-4 md:px-8">
+        <section className="bg-black py-14 px-4 md:px-8">
           <div className="max-w-[900px] mx-auto">
             <div className="flex items-center gap-3 mb-8">
               <Trophy size={16} strokeWidth={1.5} className="text-red" />
@@ -87,7 +87,7 @@ export default function GameDetail() {
             </div>
             <div className="grid grid-cols-3 gap-[2px]">
               {game.bestPerformers.map((perf, i) => (
-                <div key={i} className="bg-[#0a0a0a] p-6 text-center group hover:bg-[#0f0f0f] transition-all duration-300 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div key={i} className="bg-black-card p-6 text-center group hover:bg-black-elevated transition-all duration-300 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
                   <div className="font-heading text-[0.75rem] tracking-[3px] text-gray-600 uppercase mb-3">{perf.stat}</div>
                   <div className="font-heading text-[1.8rem] text-red group-hover:scale-110 transition-transform duration-300">{perf.value}</div>
                   <div className="text-white text-[0.8rem] mt-2">{perf.playerName}</div>
@@ -100,7 +100,7 @@ export default function GameDetail() {
 
       {/* Box Score */}
       {game.boxScore && Object.keys(game.boxScore).length > 0 && (
-        <section className="bg-[#050505] py-14 px-4 md:px-8">
+        <section className="bg-black py-14 px-4 md:px-8">
           <div className="max-w-[900px] mx-auto">
             <div className="flex items-center gap-3 mb-8">
               <Users size={16} strokeWidth={1.5} className="text-red" />
@@ -111,7 +111,7 @@ export default function GameDetail() {
                 <thead>
                   <tr className="border-b border-white/[0.08]">
                     {["Player", "PTS", "REB", "AST", "STL", "BLK"].map((h) => (
-                      <th key={h} className="py-3.5 px-4 text-[0.6rem] font-bold uppercase tracking-[2px] text-gray-600 bg-[#0a0a0a]">{h}</th>
+                      <th key={h} className="py-3.5 px-4 text-[0.6rem] font-bold uppercase tracking-[2px] text-gray-600 bg-black-card">{h}</th>
                     ))}
                   </tr>
                 </thead>

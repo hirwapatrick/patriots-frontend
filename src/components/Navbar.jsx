@@ -97,7 +97,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`fixed top-0 right-0 w-[320px] max-w-[85vw] h-full bg-[#080808]/90 backdrop-blur-xl z-[1001] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] border-l border-white/[0.05] flex flex-col ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 w-[320px] max-w-[85vw] h-full bg-black-soft/90 backdrop-blur-xl z-[1001] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] border-l border-white/[0.05] flex flex-col ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}>
         {/* Top red hairline */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/60 to-transparent pointer-events-none" />
 

@@ -66,7 +66,7 @@ export default function NewsForm() {
 
       <form onSubmit={handleSubmit} className="max-w-[800px]">
         {/* Content */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Content</h2>
           <div className="mb-4"><label className={labelClass}>Title</label><input name="title" value={form.title} onChange={handleSlug} required className={inputClass} /></div>
           <div className="mb-4"><label className={labelClass}>Slug</label><input name="slug" value={form.slug} onChange={handleChange} required className={inputClass} /></div>
@@ -75,7 +75,7 @@ export default function NewsForm() {
         </div>
 
         {/* Cover Image */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Cover Image</h2>
           <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-white/[0.08] rounded-lg cursor-pointer hover:border-red/30 hover:bg-white/[0.02] transition-all duration-200">
             {uploading ? (
@@ -90,7 +90,7 @@ export default function NewsForm() {
         </div>
 
         {/* Meta */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Metadata</h2>
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div><label className={labelClass}>Category</label>

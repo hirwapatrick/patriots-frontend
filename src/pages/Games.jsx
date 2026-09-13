@@ -41,7 +41,7 @@ export default function Games() {
       </section>
 
       {/* Season filter */}
-      <section className="bg-[#050505] py-8 px-4 md:px-8 border-b border-white/[0.04]">
+      <section className="bg-black py-8 px-4 md:px-8 border-b border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto">
           <div className="filter-pill-container">
             {seasons.map((s) => (
@@ -54,7 +54,7 @@ export default function Games() {
         </div>
       </section>
 
-      <section className="bg-[#050505] py-14 px-4 md:px-8 min-h-[50vh]">
+      <section className="bg-black py-14 px-4 md:px-8 min-h-[50vh]">
         <div className="max-w-[1200px] mx-auto space-y-16">
           {/* Upcoming */}
           <div>
@@ -69,7 +69,7 @@ export default function Games() {
               <div className="space-y-[2px]">
                 {upcoming.map((g, i) => (
                   <Link key={g._id} to={`/games/${g._id}`}
-                    className="group block bg-[#0a0a0a] border border-white/[0.04] hover:border-white/[0.08] p-6 transition-all duration-400 no-underline card-enter relative overflow-hidden"
+                    className="group block bg-black-card border border-white/[0.04] hover:border-white/[0.08] p-6 transition-all duration-400 no-underline card-enter relative overflow-hidden"
                     style={{ animationDelay: `${i * 0.05}s` }}>
                     <div className="absolute top-0 left-0 w-[2px] h-full bg-red scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
                     <div className="flex items-center justify-between">
@@ -106,7 +106,7 @@ export default function Games() {
                   const won = g.patriotsScore > g.opponentScore;
                   return (
                     <Link key={g._id} to={`/games/${g._id}`}
-                      className="group block bg-[#0a0a0a] border border-white/[0.04] hover:border-white/[0.08] p-6 transition-all duration-400 no-underline card-enter relative overflow-hidden"
+                      className="group block bg-black-card border border-white/[0.04] hover:border-white/[0.08] p-6 transition-all duration-400 no-underline card-enter relative overflow-hidden"
                       style={{ animationDelay: `${i * 0.05}s` }}>
                       <div className={`absolute top-0 left-0 w-[2px] h-full transition-transform duration-500 origin-top ${won ? "bg-red scale-y-0 group-hover:scale-y-100" : "bg-gray-700 scale-y-0 group-hover:scale-y-100"}`} />
                       <div className="flex items-center justify-between">

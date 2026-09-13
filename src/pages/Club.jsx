@@ -39,7 +39,7 @@ export default function Club() {
       </section>
 
       {story && (
-        <section className="bg-[#050505] text-white py-24 px-4 md:px-8 relative overflow-hidden">
+        <section className="bg-black text-white py-24 px-4 md:px-8 relative overflow-hidden">
           <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-red/[0.02] rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-[1200px] mx-auto grid grid-cols-[1fr_1fr] gap-16 items-center max-md:grid-cols-1 relative z-10">
             <div className="reveal">
@@ -95,7 +95,7 @@ export default function Club() {
 
       {/* Staff */}
       {staff.length > 0 && (
-        <section className="bg-[#050505] text-white py-24 px-4 md:px-8">
+        <section className="bg-black text-white py-24 px-4 md:px-8">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-16">
               <span className="inline-flex items-center gap-2 font-heading text-[0.75rem] tracking-[5px] text-red mb-3 uppercase justify-center">
@@ -107,7 +107,7 @@ export default function Club() {
             </div>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-[2px]">
               {staff.map((s, i) => (
-                <div key={s._id} className="bg-[#0a0a0a] text-white p-7 text-center group hover:bg-[#0f0f0f] transition-all duration-500 card-enter relative overflow-hidden" style={{ animationDelay: `${i * 0.08}s` }}>
+                <div key={s._id} className="bg-black-card text-white p-7 text-center group hover:bg-black-elevated transition-all duration-500 card-enter relative overflow-hidden" style={{ animationDelay: `${i * 0.08}s` }}>
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-red scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
                   {s.photo && (
                     <div className="relative mx-auto mb-4 w-[90px] h-[90px]">

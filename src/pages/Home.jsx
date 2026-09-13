@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { homepageAPI, playerAPI, gameAPI, newsAPI, sponsorAPI, galleryAPI } from "../services/api";
-import { Loader2, ChevronRight, Trophy, Shield, Calendar, ArrowRight, MapPin, Zap } from "lucide-react";
+import { Loader2, ChevronRight, ChevronLeft, Trophy, Shield, Calendar, ArrowRight, MapPin, Zap } from "lucide-react";
 
 function AnimatedCounter({ value, suffix = "" }) {
   const [count, setCount] = useState(0);
@@ -39,6 +39,9 @@ function AnimatedCounter({ value, suffix = "" }) {
 export default function Home() {
   const [homepage, setHomepage] = useState(null);
   const [players, setPlayers] = useState([]);
+  const [mvpPlayers, setMvpPlayers] = useState([]);
+  const [mvpIndex, setMvpIndex] = useState(0);
+  const [mvpPaused, setMvpPaused] = useState(false);
   const [upcomingGame, setUpcomingGame] = useState(null);
   const [news, setNews] = useState([]);
   const [sponsors, setSponsors] = useState([]);
@@ -49,13 +52,15 @@ export default function Home() {
     Promise.all([
       homepageAPI.get().catch(() => ({ data: null })),
       playerAPI.getAll({}).catch(() => ({ data: [] })),
+      playerAPI.getAll({ mvp: true }).catch(() => ({ data: [] })),
       gameAPI.getUpcoming().catch(() => ({ data: [] })),
       newsAPI.getAll({ limit: 4 }).catch(() => ({ data: [] })),
       sponsorAPI.getAll().catch(() => ({ data: [] })),
       galleryAPI.getAll({ limit: 6 }).catch(() => ({ data: [] })),
-    ]).then(([hp, pl, gm, nw, sp, gl]) => {
+    ]).then(([hp, pl, mv, gm, nw, sp, gl]) => {
       setHomepage(hp.data);
       setPlayers(pl.data);
+      setMvpPlayers(mv.data);
       setUpcomingGame(gm.data[0] || null);
       setNews(nw.data);
       setSponsors(sp.data);
@@ -63,6 +68,15 @@ export default function Home() {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (mvpPlayers.length < 2 || mvpPaused) return;
+    const timer = setInterval(
+      () => setMvpIndex((i) => (i + 1) % mvpPlayers.length),
+      5000
+    );
+    return () => clearInterval(timer);
+  }, [mvpPaused, mvpPlayers.length]);
 
   if (loading) return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black gap-6">
@@ -72,6 +86,9 @@ export default function Home() {
   );
 
   const stats = homepage?.statistics || [];
+  const mvpSafeIndex = Math.min(mvpIndex, Math.max(mvpPlayers.length - 1, 0));
+  const mvpPrev = () => setMvpIndex((i) => (i - 1 + mvpPlayers.length) % mvpPlayers.length);
+  const mvpNext = () => setMvpIndex((i) => (i + 1) % mvpPlayers.length);
 
   return (
     <div>
@@ -133,7 +150,7 @@ export default function Home() {
         <section className="bg-black border-y border-white/[0.04] py-12">
           <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-[repeat(4,1fr)] gap-[1px]">
             {stats.map((stat, i) => (
-              <div key={i} className="bg-[#0a0a0a] text-center py-8 group hover:bg-[#0f0f0f] transition-all duration-500 relative overflow-hidden">
+              <div key={i} className="bg-black-card text-center py-8 group hover:bg-black-elevated transition-all duration-500 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-red/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative font-heading text-[clamp(2rem,4vw,3.8rem)] leading-none tracking-[1px] text-red">
                   <AnimatedCounter value={stat.value} />
@@ -141,6 +158,88 @@ export default function Home() {
                 <div className="relative text-gray-500 text-[0.65rem] font-bold uppercase tracking-[3px] mt-3">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* MVP Slideshow */}
+      {mvpPlayers.length > 0 && (
+        <section className="bg-black py-24 px-4 md:px-8 relative overflow-hidden">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <span className="inline-flex items-center gap-2 font-heading text-[0.75rem] tracking-[5px] text-red mb-2 uppercase">
+                  <span className="w-6 h-[1px] bg-red" />
+                  MVPs
+                </span>
+                <h2 className="font-heading text-[clamp(2.5rem,6vw,5rem)] uppercase leading-[0.9] tracking-[1px]">Season MVPs</h2>
+              </div>
+              {mvpPlayers.length > 1 && (
+                <div className="flex items-center gap-2">
+                  <button onClick={mvpPrev} aria-label="Previous MVP" className="w-11 h-11 border border-white/[0.08] text-white hover:bg-red hover:border-red hover:-translate-y-px transition-all duration-300 flex items-center justify-center cursor-pointer">
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button onClick={mvpNext} aria-label="Next MVP" className="w-11 h-11 border border-white/[0.08] text-white hover:bg-red hover:border-red hover:-translate-y-px transition-all duration-300 flex items-center justify-center cursor-pointer">
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div
+              className="relative rounded-sm overflow-hidden border border-white/[0.06] bg-black-card"
+              onMouseEnter={() => setMvpPaused(true)}
+              onMouseLeave={() => setMvpPaused(false)}
+            >
+              <div className="relative aspect-[16/9] max-md:aspect-[4/5]">
+                {mvpPlayers.map((p, i) => {
+                  const isActive = i === mvpSafeIndex;
+                  return (
+                    <div key={p._id} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}>
+                      <div className="absolute inset-0">
+                        {p.photo ? (
+                          <img src={p.photo} alt={`${p.firstName} ${p.lastName}`} className={`w-full h-full object-cover object-top ${isActive ? "mvp-img-zoom" : ""}`} loading="lazy" />
+                        ) : null}
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/20" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/60" />
+                      <div className="absolute -right-6 -bottom-8 font-heading text-[clamp(8rem,20vw,18rem)] leading-none text-white/[0.04] select-none pointer-events-none hidden md:block">{p.jerseyNumber}</div>
+
+                      <div className="relative z-10 h-full w-full flex items-center px-6 md:px-14 py-10">
+                        <div className="max-w-[520px]">
+                          <span className="inline-flex items-center gap-2 rounded-sm bg-red text-white text-[0.6rem] font-bold uppercase tracking-[3px] px-3 py-1.5 mb-5">
+                            <Trophy size={12} /> Season MVP
+                          </span>
+                          <div className="font-heading text-red text-[clamp(2.5rem,7vw,6rem)] leading-none tracking-[2px] drop-shadow-[0_0_30px_rgba(227,27,35,0.4)]">
+                            #{p.jerseyNumber}
+                          </div>
+                          <h3 className="font-heading text-[clamp(2rem,5vw,4.2rem)] uppercase tracking-[1px] leading-[0.9] text-white mt-2">
+                            {p.firstName} {p.lastName}
+                          </h3>
+                          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-white/70 text-[0.7rem] font-bold uppercase tracking-[3px]">
+                            <span className="flex items-center gap-2"><Shield size={13} className="text-red" /> {p.position}</span>
+                            {p.nationality && <span className="flex items-center gap-2"><MapPin size={13} className="text-red" /> {p.nationality}</span>}
+                            {p.height && <span className="flex items-center gap-2"><Zap size={13} className="text-red" /> {p.height}</span>}
+                          </div>
+                          <Link to={`/team/${p._id}`} className="btn-ripple mt-7 inline-flex items-center gap-2 px-6 py-3 bg-white text-black text-[0.68rem] font-bold uppercase tracking-[2px] hover:bg-gray-100 hover:-translate-y-px transition-all duration-300 no-underline relative overflow-hidden">
+                            View Player <ArrowRight size={13} strokeWidth={2} />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {mvpPlayers.length > 1 && (
+                <div className="absolute bottom-4 right-6 z-20 flex items-center gap-2">
+                  {mvpPlayers.map((p, i) => (
+                    <button key={p._id} onClick={() => setMvpIndex(i)} aria-label={`Go to slide ${i + 1}`}
+                      className={`h-1 transition-all duration-500 cursor-pointer ${i === mvpSafeIndex ? "w-8 bg-red" : "w-4 bg-white/25 hover:bg-white/50"}`} />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
       )}
@@ -159,7 +258,7 @@ export default function Home() {
               </Link>
             </div>
             <Link to={`/games/${upcomingGame._id}`} className="block game-card-hover-line group">
-              <div className="bg-[#0c0c0e] border border-white/[0.06] p-8 md:p-12 transition-all duration-500">
+              <div className="bg-black-soft border border-white/[0.06] p-8 md:p-12 transition-all duration-500">
                 <div className="text-gray-600 text-[0.7rem] font-bold uppercase tracking-[3px] mb-10 flex items-center gap-3">
                   <Zap size={12} className="text-red" />
                   {upcomingGame.home ? "Home Game" : "Away Game"}
@@ -194,7 +293,7 @@ export default function Home() {
 
       {/* Players */}
       {players.length > 0 && (
-        <section className="bg-[#050505] py-24 px-4 md:px-8">
+        <section className="bg-black py-24 px-4 md:px-8">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -211,13 +310,13 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[2px]">
               {players.slice(0, 4).map((p, i) => (
                 <Link key={p._id} to={`/team/${p._id}`}
-                  className="group block bg-[#0a0a0a] overflow-hidden border border-white/[0.04] hover:border-red/20 transition-all duration-500 no-underline card-enter relative"
+                  className="group block bg-black-card overflow-hidden border border-white/[0.04] hover:border-red/20 transition-all duration-500 no-underline card-enter relative"
                   style={{ animationDelay: `${i * 0.1}s` }}>
                   <div className="aspect-[3/4] overflow-hidden relative">
                     {p.photo ? (
                       <img src={p.photo} alt={`${p.firstName} ${p.lastName}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" loading="lazy" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-[#0c0c0e]">
+                      <div className="w-full h-full flex items-center justify-center bg-black-soft">
                         <Shield size={48} strokeWidth={1} className="text-white/10 group-hover:text-red/20 transition-colors duration-500" />
                       </div>
                     )}
@@ -265,7 +364,7 @@ export default function Home() {
 
       {/* News */}
       {news.length > 0 && (
-        <section className="bg-[#050505] py-24 px-4 md:px-8">
+        <section className="bg-black py-24 px-4 md:px-8">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -282,7 +381,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
               {news.map((n, i) => (
                 <Link key={n._id} to={`/news/${n._id}`}
-                  className="group block bg-[#0a0a0a] overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline glow-card card-enter"
+                  className="group block bg-black-card overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline glow-card card-enter"
                   style={{ animationDelay: `${i * 0.1}s` }}>
                   {n.featuredImage && <div className="aspect-[16/7] overflow-hidden"><img src={n.featuredImage} alt={n.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" /></div>}
                   <div className="p-7">
@@ -335,7 +434,7 @@ export default function Home() {
 
       {/* Sponsors Marquee */}
       {sponsors.length > 0 && (
-        <section className="bg-[#050505] py-16 border-y border-white/[0.04]">
+        <section className="bg-black py-16 border-y border-white/[0.04]">
           <div className="max-w-[1200px] mx-auto text-center mb-10">
             <span className="inline-flex items-center gap-2 font-heading text-[0.75rem] tracking-[5px] text-red mb-2 uppercase justify-center">
               <span className="w-6 h-[1px] bg-red" />

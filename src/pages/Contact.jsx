@@ -27,7 +27,7 @@ export default function Contact() {
         <h1 className="font-heading text-[clamp(3rem,8vw,6rem)] uppercase tracking-[3px] leading-[0.9] page-hero-title">Get In Touch</h1>
       </section>
 
-      <section className="bg-[#050505] text-white py-20 px-4 md:px-8">
+      <section className="bg-black text-white py-20 px-4 md:px-8">
         <div className="max-w-[900px] mx-auto">
           <div className="grid grid-cols-[1fr_1.5fr] gap-12 max-md:grid-cols-1">
             {/* Info side */}
@@ -56,7 +56,7 @@ export default function Contact() {
             {/* Form side */}
             <div className="reveal reveal-delay-2">
               {success && (
-                <div className="bg-[#0a0a0a] border border-red/20 p-6 text-center mb-8 flex items-center justify-center gap-3 animate-[scaleIn_0.4s_cubic-bezier(0.16,1,0.3,1)_both]">
+                <div className="bg-black-card border border-red/20 p-6 text-center mb-8 flex items-center justify-center gap-3 animate-[scaleIn_0.4s_cubic-bezier(0.16,1,0.3,1)_both]">
                   <CheckCircle size={18} strokeWidth={1.5} className="text-red" />
                   <div>
                     <p className="font-heading text-[0.85rem] tracking-[2px] uppercase text-white">Message Sent</p>
@@ -75,23 +75,23 @@ export default function Contact() {
                 <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                   <div className="floating-group">
                     <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required placeholder=" "
-                      className="w-full py-3.5 px-4 border border-white/[0.08] bg-[#0a0a0a] text-white text-[0.9rem] glow-input rounded-sm" />
+                      className="w-full py-3.5 px-4 border border-white/[0.08] bg-black-card text-white text-[0.9rem] glow-input rounded-sm" />
                     <label className="floating-label">Name</label>
                   </div>
                   <div className="floating-group">
                     <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required placeholder=" "
-                      className="w-full py-3.5 px-4 border border-white/[0.08] bg-[#0a0a0a] text-white text-[0.9rem] glow-input rounded-sm" />
+                      className="w-full py-3.5 px-4 border border-white/[0.08] bg-black-card text-white text-[0.9rem] glow-input rounded-sm" />
                     <label className="floating-label">Email</label>
                   </div>
                 </div>
                 <div className="floating-group">
                   <input type="text" value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })} required placeholder=" "
-                    className="w-full py-3.5 px-4 border border-white/[0.08] bg-[#0a0a0a] text-white text-[0.9rem] glow-input rounded-sm" />
+                    className="w-full py-3.5 px-4 border border-white/[0.08] bg-black-card text-white text-[0.9rem] glow-input rounded-sm" />
                   <label className="floating-label">Subject</label>
                 </div>
                 <div className="floating-group">
                   <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required rows={5} placeholder=" "
-                    className="w-full py-3.5 px-4 border border-white/[0.08] bg-[#0a0a0a] text-white text-[0.9rem] resize-none glow-input rounded-sm" />
+                    className="w-full py-3.5 px-4 border border-white/[0.08] bg-black-card text-white text-[0.9rem] resize-none glow-input rounded-sm" />
                   <label className="floating-label">Message</label>
                 </div>
                 <button type="submit" disabled={loading}

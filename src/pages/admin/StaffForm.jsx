@@ -65,7 +65,7 @@ export default function StaffForm() {
 
       <form onSubmit={handleSubmit} className="max-w-[800px]">
         {/* Basic */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Information</h2>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div><label className={labelClass}>First Name</label><input name="firstName" value={form.firstName} onChange={handleChange} required className={inputClass} /></div>
@@ -87,7 +87,7 @@ export default function StaffForm() {
         </div>
 
         {/* Photo */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Photo</h2>
           <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/[0.08] rounded-lg cursor-pointer hover:border-red/30 hover:bg-white/[0.02] transition-all duration-200">
             {uploading ? (
@@ -102,13 +102,13 @@ export default function StaffForm() {
         </div>
 
         {/* Bio */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Biography</h2>
           <textarea name="biography" value={form.biography} onChange={handleChange} rows={4} className={`${inputClass} resize-none`} />
         </div>
 
         {/* Social + Order */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-6">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-6">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Social & Ordering</h2>
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div><label className={labelClass}>Instagram</label><input name="socialLinks.instagram" value={form.socialLinks.instagram} onChange={handleChange} placeholder="https://instagram.com/..." className={inputClass} /></div>

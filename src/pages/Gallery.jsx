@@ -41,7 +41,7 @@ export default function Gallery() {
         <h1 className="font-heading text-[clamp(3rem,8vw,6rem)] uppercase tracking-[3px] leading-[0.9] page-hero-title">Moments</h1>
       </section>
 
-      <section className="bg-[#050505] py-10 px-4 md:px-8">
+      <section className="bg-black py-10 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           {images.length === 0 ? (
             <div className="py-20 text-center">

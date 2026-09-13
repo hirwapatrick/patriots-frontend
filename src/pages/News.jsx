@@ -33,7 +33,7 @@ export default function News() {
         <h1 className="font-heading text-[clamp(3rem,8vw,6rem)] uppercase tracking-[3px] leading-[0.9] page-hero-title">News</h1>
       </section>
 
-      <section className="bg-[#050505] py-8 px-4 md:px-8 border-b border-white/[0.04]">
+      <section className="bg-black py-8 px-4 md:px-8 border-b border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto">
           <div className="filter-pill-container">
             {[{ _id: "all", name: "All" }, ...categories].map((c) => {
@@ -49,7 +49,7 @@ export default function News() {
         </div>
       </section>
 
-      <section className="bg-[#050505] py-14 px-4 md:px-8 min-h-[50vh]">
+      <section className="bg-black py-14 px-4 md:px-8 min-h-[50vh]">
         <div className="max-w-[1200px] mx-auto">
           {filtered.length === 0 ? (
             <div className="text-center text-gray-600 py-20 text-[0.85rem] uppercase tracking-[2px]">No articles found.</div>
@@ -57,7 +57,7 @@ export default function News() {
             <div className="space-y-[2px]">
               {/* Featured article */}
               {featured && (
-                <Link to={`/news/${featured._id}`} className="group block bg-[#0a0a0a] overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline mb-4 glow-card">
+                <Link to={`/news/${featured._id}`} className="group block bg-black-card overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline mb-4 glow-card">
                   <div className="grid grid-cols-[1fr_1fr] max-md:grid-cols-1">
                     {featured.featuredImage && (
                       <div className="aspect-[16/10] overflow-hidden relative">
@@ -87,7 +87,7 @@ export default function News() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
                   {filtered.slice(1).map((n, i) => (
                     <Link key={n._id} to={`/news/${n._id}`}
-                      className="group block bg-[#0a0a0a] overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline glow-card card-enter"
+                      className="group block bg-black-card overflow-hidden border border-white/[0.04] hover:border-white/[0.08] transition-all duration-500 no-underline glow-card card-enter"
                       style={{ animationDelay: `${i * 0.08}s` }}>
                       {n.featuredImage && <div className="aspect-[16/9] overflow-hidden"><img src={n.featuredImage} alt={n.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" /></div>}
                       <div className="p-6">

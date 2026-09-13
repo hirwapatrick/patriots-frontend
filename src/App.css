@@ -3,15 +3,19 @@
 @theme {
   --color-red: #E31B23;
   --color-red-dark: #b8151c;
-  --color-black: #050505;
-  --color-black-soft: #0c0c0c;
-  --color-black-card: #111111;
-  --color-black-elevated: #161616;
-  --color-gray-100: #F4F4F4;
-  --color-gray-200: #e0e0e0;
-  --color-gray-400: #888;
-  --color-gray-500: #555;
-  --color-gray-700: #333;
+  --color-black: #2A2A2A;
+  --color-black-soft: #323232;
+  --color-black-card: #3B3B3B;
+  --color-black-elevated: #434343;
+  --color-gray-100: #FFFFFF;
+  --color-gray-200: #FFFFFF;
+  --color-gray-300: #FFFFFF;
+  --color-gray-400: #FFFFFF;
+  --color-gray-500: #FFFFFF;
+  --color-gray-600: #FFFFFF;
+  --color-gray-700: #FFFFFF;
+  --color-gray-800: #FFFFFF;
+  --color-gray-900: #FFFFFF;
   --font-heading: 'Bebas Neue', 'Impact', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -28,6 +32,11 @@ body {
   color: #fff;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
 }
 
 ::selection {
@@ -53,7 +62,7 @@ select {
 
 select option,
 select optgroup {
-  background-color: #111113;
+  background-color: #3a3a3a;
   color: #e0e0e0;
   padding: 10px 14px;
   font-size: 0.85rem;
@@ -63,7 +72,7 @@ select option:hover,
 select option:focus,
 select option:active,
 select option:checked {
-  background-color: #1a1a1e;
+  background-color: #464646;
   color: #fff;
 }
 
@@ -84,7 +93,7 @@ select:hover {
     color: #e0e0e0;
   }
   select option {
-    background-color: #111113 !important;
+    background-color: #3a3a3a !important;
     color: #e0e0e0 !important;
     padding: 8px 12px;
   }
@@ -202,6 +211,14 @@ select:hover {
   to { stroke-dashoffset: 0; }
 }
 
+@keyframes mvpZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.mvp-img-zoom {
+  animation: mvpZoom 8s ease-out forwards;
+}
+
 @keyframes cardReveal {
   from { opacity: 0; transform: translateY(30px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -278,8 +295,8 @@ select:hover {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.05) 30%, rgba(5,5,5,0.9) 100%),
-    linear-gradient(90deg, rgba(5,5,5,0.75) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(42,42,42,0.45) 0%, rgba(42,42,42,0.1) 30%, rgba(24,24,24,0.9) 100%),
+    linear-gradient(90deg, rgba(24,24,24,0.65) 0%, transparent 50%),
     linear-gradient(0deg, rgba(227,27,35,0.06) 0%, transparent 40%);
 }
 
@@ -467,7 +484,7 @@ select:hover {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  background: #0c0c0c;
+  background: #323232;
 }
 .gallery-item img {
   width: 100%;
@@ -652,8 +669,8 @@ select:hover {
 .navbar-glass {
   background: linear-gradient(
     to bottom,
-    rgba(8, 8, 8, 0.55),
-    rgba(8, 8, 8, 0.22)
+    rgba(46, 46, 46, 0.55),
+    rgba(46, 46, 46, 0.25)
   );
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
@@ -663,14 +680,14 @@ select:hover {
 .navbar-glass.scrolled {
   background: linear-gradient(
     to bottom,
-    rgba(8, 8, 8, 0.92),
-    rgba(8, 8, 8, 0.8)
+    rgba(46, 46, 46, 0.95),
+    rgba(46, 46, 46, 0.85)
   );
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom-color: rgba(227, 27, 35, 0.16);
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.6),
+    0 10px 40px rgba(0, 0, 0, 0.4),
     0 1px 0 rgba(227, 27, 35, 0.1),
     0 -24px 60px -28px rgba(227, 27, 35, 0.25);
 }
@@ -779,7 +796,7 @@ select:hover {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--color-black); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--color-gray-700), var(--color-red-dark));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), var(--color-red-dark));
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-red); }
@@ -804,11 +821,11 @@ select:hover {
 }
 .sponsor-marquee::before {
   left: 0;
-  background: linear-gradient(90deg, #050505, transparent);
+  background: linear-gradient(90deg, var(--color-black), transparent);
 }
 .sponsor-marquee::after {
   right: 0;
-  background: linear-gradient(-90deg, #050505, transparent);
+  background: linear-gradient(-90deg, var(--color-black), transparent);
 }
 
 /* ============================================================

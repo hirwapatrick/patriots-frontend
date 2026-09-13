@@ -64,7 +64,7 @@ export default function Footer() {
   const contactAddress = settings?.address || "Kigali, Rwanda";
 
   return (
-    <footer className="bg-[#060606] text-white border-t border-white/[0.04] relative">
+    <footer className="bg-black-soft text-white border-t border-white/[0.04] relative">
       {/* Top glow line */}
       <div className="h-[1px] bg-gradient-to-r from-transparent via-red/60 to-transparent" />
       <div className="h-[40px] bg-gradient-to-b from-red/[0.04] to-transparent pointer-events-none" />

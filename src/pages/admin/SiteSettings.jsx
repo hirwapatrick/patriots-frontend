@@ -40,7 +40,7 @@ export default function SiteSettingsPage() {
 
   const inputClass = "w-full py-2.5 px-3.5 bg-white/[0.03] border border-white/[0.08] rounded-md text-white text-[0.85rem] placeholder:text-gray-600 focus:outline-none focus:border-red/40 focus:bg-white/[0.05] transition-all duration-200";
   const labelClass = "block mb-1.5 text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-gray-500";
-  const card = "bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4";
+  const card = "bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4";
 
   return (
     <div>

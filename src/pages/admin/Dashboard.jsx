@@ -67,7 +67,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-4 gap-4 mb-8 max-xl:grid-cols-2 max-sm:grid-cols-1">
         {statCards.map((s) => (
           <Link key={s.label} to={s.to}
-            className="group relative bg-[#111113] border border-white/[0.06] rounded-lg p-5 no-underline text-white overflow-hidden hover:border-red/20 transition-all duration-300">
+            className="group relative bg-black-card border border-white/[0.06] rounded-lg p-5 no-underline text-white overflow-hidden hover:border-red/20 transition-all duration-300">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="flex items-start justify-between mb-4">
               <div className="w-9 h-9 rounded-lg bg-red/10 flex items-center justify-center text-red">
@@ -86,7 +86,7 @@ export default function Dashboard() {
       {/* Activity + Quick Actions */}
       <div className="grid grid-cols-[1.4fr_1fr] gap-4 max-xl:grid-cols-1">
         {/* Activity */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg overflow-hidden">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-white/[0.06] flex items-center justify-between">
             <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300">Recent Activity</h2>
             <span className="text-[0.6rem] text-gray-600 uppercase tracking-[2px]">{recentActivity.length} items</span>
@@ -114,7 +114,7 @@ export default function Dashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg overflow-hidden">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-white/[0.06]">
             <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300">Quick Actions</h2>
           </div>

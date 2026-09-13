@@ -39,8 +39,8 @@ export default function AdminLayout({ children }) {
   ];
 
   return (
-    <div className="flex min-h-screen bg-[#09090b]">
-      <aside className="w-[260px] bg-[#0c0c0e] text-white flex flex-col fixed top-0 left-0 bottom-0 overflow-y-auto border-r border-white/[0.06] max-lg:hidden z-40">
+    <div className="flex min-h-screen bg-black">
+      <aside className="w-[260px] bg-black-soft text-white flex flex-col fixed top-0 left-0 bottom-0 overflow-y-auto border-r border-white/[0.06] max-lg:hidden z-40">
         <div className="px-6 py-5 border-b border-white/[0.06]">
           <Link to="/admin/dashboard" className="no-underline block group">
             <img src="/logo.png" alt="Patriots BBC" className="h-9 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(227,27,35,0.35)] transition-opacity duration-300 group-hover:opacity-90" />

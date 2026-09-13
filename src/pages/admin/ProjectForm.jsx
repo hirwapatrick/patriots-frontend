@@ -59,7 +59,7 @@ export default function ProjectForm() {
       </h1>
 
       <form onSubmit={handleSubmit} className="max-w-[800px]">
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Content</h2>
           <div className="mb-4"><label className={labelClass}>Title</label><input name="title" value={form.title} onChange={handleSlug} required className={inputClass} /></div>
           <div className="mb-4"><label className={labelClass}>Slug</label><input name="slug" value={form.slug} onChange={handleChange} required className={inputClass} /></div>
@@ -67,7 +67,7 @@ export default function ProjectForm() {
           <div><label className={labelClass}>Content (HTML)</label><textarea name="content" value={form.content} onChange={handleChange} rows={8} className={`${inputClass} resize-none font-mono text-[0.8rem]`} /></div>
         </div>
 
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Thumbnail</h2>
           <label className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-white/[0.08] rounded-lg cursor-pointer hover:border-red/30 hover:bg-white/[0.02] transition-all duration-200">
             {uploading ? <div className="flex items-center gap-2 text-gray-500"><Loader2 size={16} className="animate-spin" /></div>
@@ -77,7 +77,7 @@ export default function ProjectForm() {
           </label>
         </div>
 
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Settings</h2>
           <div className="mb-4"><label className={labelClass}>Category</label>
             <select name="category" value={form.category} onChange={handleChange} required className={inputClass}>

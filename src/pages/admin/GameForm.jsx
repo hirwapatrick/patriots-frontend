@@ -66,7 +66,7 @@ export default function GameForm() {
 
       <form onSubmit={handleSubmit} className="max-w-[900px]">
         {/* Teams */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Teams</h2>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div><label className={labelClass}>Home Team</label><input name="homeTeam" value={form.homeTeam} onChange={handleChange} required className={inputClass} /></div>
@@ -92,7 +92,7 @@ export default function GameForm() {
         </div>
 
         {/* Schedule */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Schedule</h2>
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div><label className={labelClass}>Date</label><input name="date" type="date" value={form.date} onChange={handleChange} required className={inputClass} /></div>
@@ -111,7 +111,7 @@ export default function GameForm() {
         </div>
 
         {/* Status & Score */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Status & Score</h2>
           <div className="grid grid-cols-3 gap-4">
             <div><label className={labelClass}>Status</label>
@@ -125,7 +125,7 @@ export default function GameForm() {
         </div>
 
         {/* Extras */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Details</h2>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div><label className={labelClass}>Ticket Info</label><input name="ticketInfo" value={form.ticketInfo} onChange={handleChange} className={inputClass} /></div>

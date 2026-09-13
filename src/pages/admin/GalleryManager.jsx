@@ -65,7 +65,7 @@ export default function GalleryManager() {
       <h1 className="font-heading text-[2.2rem] tracking-[2px] uppercase text-white leading-none mb-8">Gallery Manager</h1>
 
       {/* Upload Form */}
-      <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-6">
+      <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-6">
         <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">{editingId ? "Edit Image" : "Upload Image"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -124,14 +124,14 @@ export default function GalleryManager() {
         <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300">Gallery Images ({images.length})</h2>
       </div>
       {images.length === 0 ? (
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-12 text-center">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-12 text-center">
           <Image size={32} className="text-gray-700 mx-auto mb-3" />
           <p className="text-gray-600 text-[0.85rem]">No images yet.</p>
         </div>
       ) : (
         <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
           {images.map((img) => (
-            <div key={img._id} className="bg-[#111113] border border-white/[0.06] rounded-lg overflow-hidden group">
+            <div key={img._id} className="bg-black-card border border-white/[0.06] rounded-lg overflow-hidden group">
               <div className="h-[160px] overflow-hidden bg-white/[0.02]">
                 <img src={img.imageUrl} alt={img.caption || "Gallery"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>

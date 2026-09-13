@@ -48,7 +48,7 @@ export default function PlayerDetail() {
       </section>
 
       {/* Info */}
-      <section className="bg-[#050505] py-12 px-4 md:px-8 border-b border-white/[0.04]">
+      <section className="bg-black py-12 px-4 md:px-8 border-b border-white/[0.04]">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[2px]">
           {[
             { icon: Ruler, label: "Height", value: player.height || "—" },
@@ -56,7 +56,7 @@ export default function PlayerDetail() {
             { icon: Calendar, label: "Born", value: player.dateOfBirth ? new Date(player.dateOfBirth).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" }) : "—" },
             { icon: Shield, label: "Number", value: `#${player.jerseyNumber}` },
           ].map(({ icon: Icon, label, value }, i) => (
-            <div key={label} className="bg-[#0a0a0a] p-6 text-center group hover:bg-[#0f0f0f] transition-all duration-500 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
+            <div key={label} className="bg-black-card p-6 text-center group hover:bg-black-elevated transition-all duration-500 card-enter" style={{ animationDelay: `${i * 0.1}s` }}>
               <div className="w-10 h-10 bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mx-auto mb-3 group-hover:bg-red/10 group-hover:border-red/20 transition-all duration-300">
                 <Icon size={16} strokeWidth={1.5} className="text-red" />
               </div>
@@ -69,7 +69,7 @@ export default function PlayerDetail() {
 
       {/* Bio */}
       {player.bio && (
-        <section className="bg-[#050505] py-16 px-4 md:px-8">
+        <section className="bg-black py-16 px-4 md:px-8">
           <div className="max-w-[800px] mx-auto">
             <span className="inline-flex items-center gap-2 font-heading text-[0.75rem] tracking-[5px] text-red mb-4 uppercase">
               <span className="w-6 h-[1px] bg-red" />

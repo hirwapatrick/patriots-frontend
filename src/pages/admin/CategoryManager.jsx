@@ -35,7 +35,7 @@ export default function CategoryManager() {
       </button>
       <h1 className="font-heading text-[2.2rem] tracking-[2px] uppercase text-white leading-none mb-8">Category Manager</h1>
 
-      <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-6 max-w-[600px]">
+      <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-6 max-w-[600px]">
         <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">{editingId ? "Edit Category" : "Add Category"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4"><label className={labelClass}>Name</label><input value={name} onChange={(e) => handleSlug(e.target.value)} required className={inputClass} /></div>
@@ -54,12 +54,12 @@ export default function CategoryManager() {
         <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300">Categories ({categories.length})</h2>
       </div>
       {categories.length === 0 ? (
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-12 text-center">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-12 text-center">
           <FolderOpen size={32} className="text-gray-700 mx-auto mb-3" />
           <p className="text-gray-600 text-[0.85rem]">No categories yet.</p>
         </div>
       ) : (
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg overflow-hidden max-w-[600px]">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg overflow-hidden max-w-[600px]">
           <table className="w-full text-left">
             <thead><tr className="border-b border-white/[0.06]">
               <th className="px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[1.5px] text-gray-500">Name</th>

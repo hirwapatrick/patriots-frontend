@@ -12,7 +12,7 @@ export default function PlayerForm() {
     firstName: "", lastName: "", jerseyNumber: "", position: "Guard",
     height: "", weight: "", nationality: "", dateOfBirth: "", photo: "",
     biography: "", previousTeam: "", status: "active",
-    socialLinks: { instagram: "", twitter: "", facebook: "" }, order: 0,
+    socialLinks: { instagram: "", twitter: "", facebook: "" }, order: 0, isMvp: false,
   });
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function PlayerForm() {
 
       <form onSubmit={handleSubmit} className="max-w-[900px]">
         {/* Basic Info */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Basic Information</h2>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div><label className={labelClass}>First Name</label><input name="firstName" value={form.firstName} onChange={handleChange} required className={inputClass} /></div>
@@ -87,8 +87,29 @@ export default function PlayerForm() {
           </div>
         </div>
 
+        {/* MVP */}
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
+          <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">MVP Spotlight</h2>
+          <label className="flex items-center gap-3 cursor-pointer select-none w-fit relative">
+            <input
+              type="checkbox"
+              name="isMvp"
+              checked={!!form.isMvp}
+              onChange={(e) => setForm((prev) => ({ ...prev, isMvp: e.target.checked }))}
+              className="sr-only"
+            />
+            <span className={`relative w-11 h-6 rounded-full transition-colors duration-300 shrink-0 ${form.isMvp ? "bg-red" : "bg-white/[0.12]"}`}>
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-transform duration-300 ${form.isMvp ? "translate-x-5" : ""}`} />
+            </span>
+            <span className="flex flex-col">
+              <span className="text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white">MVP Player</span>
+              <span className="text-[0.7rem] text-gray-500">Featured in the home page MVP slideshow</span>
+            </span>
+          </label>
+        </div>
+
         {/* Physical */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Details</h2>
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div><label className={labelClass}>Height</label><input name="height" value={form.height} onChange={handleChange} placeholder="e.g. 1.92m" className={inputClass} /></div>
@@ -102,7 +123,7 @@ export default function PlayerForm() {
         </div>
 
         {/* Photo */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Photo</h2>
           <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/[0.08] rounded-lg cursor-pointer hover:border-red/30 hover:bg-white/[0.02] transition-all duration-200">
             {uploading ? (
@@ -117,13 +138,13 @@ export default function PlayerForm() {
         </div>
 
         {/* Bio */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Biography</h2>
           <textarea name="biography" value={form.biography} onChange={handleChange} rows={4} className={`${inputClass} resize-none`} />
         </div>
 
         {/* Social */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-4">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-4">
           <h2 className="text-[0.8rem] font-semibold tracking-[1.5px] uppercase text-gray-300 mb-5">Social Links</h2>
           <div className="grid grid-cols-3 gap-4">
             <div><label className={labelClass}>Instagram</label><input name="socialLinks.instagram" value={form.socialLinks.instagram} onChange={handleChange} placeholder="https://instagram.com/..." className={inputClass} /></div>
@@ -133,7 +154,7 @@ export default function PlayerForm() {
         </div>
 
         {/* Order */}
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-6 mb-6">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-6 mb-6">
           <div className="max-w-[200px]">
             <label className={labelClass}>Display Order</label>
             <input name="order" type="number" value={form.order} onChange={handleChange} className={inputClass} />

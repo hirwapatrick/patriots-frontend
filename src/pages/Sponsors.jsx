@@ -32,7 +32,7 @@ export default function Sponsors() {
         <p className="text-gray-400 mt-4 font-light page-hero-subtitle">The brands that power Patriots BBC.</p>
       </section>
 
-      <section className="bg-[#050505] text-white py-20 px-4 md:px-8">
+      <section className="bg-black text-white py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           {sponsors.length === 0 ? (
             <div className="py-20 text-center">
@@ -45,7 +45,7 @@ export default function Sponsors() {
                 const TierIcon = tierIcons[sponsor.tier?.toLowerCase()] || Handshake;
                 return (
                   <a key={sponsor._id} href={sponsor.website || "#"} target="_blank" rel="noopener noreferrer"
-                    className="group bg-[#0a0a0a] text-white p-9 text-center transition-all duration-500 block no-underline glow-card card-enter relative overflow-hidden"
+                    className="group bg-black-card text-white p-9 text-center transition-all duration-500 block no-underline glow-card card-enter relative overflow-hidden"
                     style={{ animationDelay: `${i * 0.08}s` }}>
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                     {sponsor.logo ? (

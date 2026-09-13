@@ -31,14 +31,14 @@ export default function ContactMessages() {
       {loading ? (
         <div className="flex items-center justify-center min-h-[40vh]"><Loader2 size={24} className="text-red animate-spin" /></div>
       ) : messages.length === 0 ? (
-        <div className="bg-[#111113] border border-white/[0.06] rounded-lg p-12 text-center">
+        <div className="bg-black-card border border-white/[0.06] rounded-lg p-12 text-center">
           <MessageSquare size={32} className="text-gray-700 mx-auto mb-3" />
           <p className="text-gray-600 text-[0.85rem]">No messages yet.</p>
         </div>
       ) : (
         <div className="space-y-3">
           {messages.map((msg) => (
-            <div key={msg._id} className={`bg-[#111113] border rounded-lg overflow-hidden transition-all duration-200 hover:border-white/[0.1] ${msg.read ? "border-white/[0.06]" : "border-red/20"}`}>
+            <div key={msg._id} className={`bg-black-card border rounded-lg overflow-hidden transition-all duration-200 hover:border-white/[0.1] ${msg.read ? "border-white/[0.06]" : "border-red/20"}`}>
               {/* Header */}
               <div className="px-6 py-4 flex items-start justify-between">
                 <div className="flex items-center gap-3 min-w-0">
